@@ -5,6 +5,7 @@ node{
             [string(defaultValue: 'tpmgnew', name: 'project'),
              string(defaultValue: 'my-first-microservice', name: 'appName'),
              string(defaultValue: 'development', name: 'imageVersion'),
+             string(defaultValue: '1', name: 'replica'),
              string(defaultValue: 'development', name: 'namespace')]
             )
 
@@ -42,6 +43,7 @@ node{
                    //sh("sed -i.bak 's#anandjain420/${project}:${imageVersion}#${imageTag}#' ./k8s/development/*.yaml")
                    //s/image:/image: anandjain420\/anandjain420\/tpmgnew:development.10/g
                    //sh("sed -i.bak 's/image:/image: ${imageTag}/g' ./k8s/development/*.yaml")
+                   sh("sed -i.bak 's#replicas:#replicas:${replica}#' ./k8s/development/*.yaml")
                    sh("sed -i.bak 's#anandjain420/${project}:${imageVersion}#${imageTag}#' ./k8s/development/*.yaml")
                    //Create or update resources
            sh("kubectl --namespace=${namespace} apply -f k8s/development/deployment.yaml")
