@@ -2,8 +2,10 @@ node{
  properties(
     [
         parameters(
-            [string(defaultValue: '/data', name: 'Directory'),
-             string(defaultValue: 'Dev', name: 'DEPLOY_ENV')]
+            [string(defaultValue: 'tpmgnew', name: 'project'),
+             string(defaultValue: 'my-first-microservice', name: 'appName'),
+             string(defaultValue: 'development', name: 'imageVersion'),
+             string(defaultValue: 'development', name: 'namespace')]
             )
 
     ]
@@ -14,7 +16,7 @@ node{
   //def serviceName = "${appName}-backend"  
   //def imageVersion = 'development'
   //def namespace = 'development'
-  //def imageTag = "anandjain420/${project}:${imageVersion}.${env.BUILD_NUMBER}"
+  def imageTag = "anandjain420/${project}:${imageVersion}.${env.BUILD_NUMBER}"
   
   //Checkout Code from Git
   checkout scm
