@@ -43,7 +43,8 @@ node{
                    //sh("sed -i.bak 's#anandjain420/${project}:${imageVersion}#${imageTag}#' ./k8s/development/*.yaml")
                    //s/image:/image: anandjain420\/anandjain420\/tpmgnew:development.10/g
                    //sh("sed -i.bak 's/image:/image: ${imageTag}/g' ./k8s/development/*.yaml")
-                   sh("sed -i.bak 's#replicas:#replicas:${replica}#' ./k8s/development/*.yaml")
+                   sh("sed -i.bak 's#replicas:*#replicas: ${replica}#' ./k8s/development/*.yaml")
+                   sh (echo "one")
                    sh("sed -i.bak 's#anandjain420/${project}:${imageVersion}#${imageTag}#' ./k8s/development/*.yaml")
                    //Create or update resources
            sh("kubectl --namespace=${namespace} apply -f k8s/development/deployment.yaml")
